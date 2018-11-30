@@ -1,5 +1,6 @@
 addons:
   apt:
+    update: true
     sources:
       - ubuntu-toolchain-r-test
     packages:
@@ -7,13 +8,9 @@ addons:
 
 install:
   - rm -rf public || exit 0
-  - mkdir -p src/github.com/gohugoio
-  - ln -sf $(pwd) src/github.com/gohugoio/hugo
-  - export GOPATH=$(pwd)
-  - go get
 
 script:
-  - hugo
+  - ./hugo
 
 # https://docs.travis-ci.com/user/deployment/pages/
 deploy:
