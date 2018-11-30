@@ -3,11 +3,14 @@ addons:
     sources:
       - ubuntu-toolchain-r-test
     packages:
-      - hugo
       - python-pygments
 
 install:
   - rm -rf public || exit 0
+  - mkdir -p src/github.com/gohugoio
+  - ln -sf $(pwd) src/github.com/gohugoio/hugo
+  - export GOPATH=$(pwd)
+  - go get
 
 script:
   - hugo
