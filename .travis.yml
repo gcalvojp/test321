@@ -1,6 +1,9 @@
 addons:
   apt:
+    sources:
+      - ubuntu-toolchain-r-test
     packages:
+      - libstdc++
       - python-pygments
 
 install:
