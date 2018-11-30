@@ -3,16 +3,14 @@ addons:
     sources:
       - ubuntu-toolchain-r-test
     packages:
-      - libstdc++
+      - hugo
       - python-pygments
 
 install:
-  - wget -qO- https://api.github.com/repos/gohugoio/hugo/releases/latest | sed -r -n '/browser_download_url/{/hugo_extended_.*?_Linux-64bit.tar.gz/{s@[^:]*:[[:space:]]*"([^"]*)".*@\1@g;p}}' | xargs wget
-  - tar -xvzf *.tar.gz
   - rm -rf public || exit 0
 
 script:
-  - ./hugo
+  - hugo
 
 # https://docs.travis-ci.com/user/deployment/pages/
 deploy:
